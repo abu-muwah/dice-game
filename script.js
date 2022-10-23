@@ -1,5 +1,7 @@
 'use strict';
 
+const player01 = document.querySelector('player--0')
+const player02 = document.querySelector('player--2')
 const score0 = document.getElementById('score--0')
 const score1 = document.getElementById('score--1')
 const dice = document.querySelector('.dice')
@@ -25,7 +27,7 @@ rollBtn.addEventListener('click', () => {
     console.log(randDice)
     dice.classList.remove('hidden')
     dice.src = `dice-${randDice}.png`
-    
+
     if (randDice !== 1) {
         current += randDice
         document.getElementById(`current--${activePlayer}`).textContent = current 
