@@ -14,7 +14,10 @@ score0.textContent = 0
 score1.textContent = 0
 dice.classList.add('hidden')
 
+const scores = [0, 0]
 let current = 0
+let activePlayer = 0
+
 
 rollBtn.addEventListener('click', () => {
     const randDice = Math.trunc(Math.random() * 6) + 1
@@ -22,8 +25,16 @@ rollBtn.addEventListener('click', () => {
     console.log(randDice)
     dice.classList.remove('hidden')
     dice.src = `dice-${randDice}.png`
-    current += randDice
-    current0.textContent = current
+    
+    if (randDice !== 1) {
+        current += randDice
+        document.getElementById(`current--${activePlayer}`).textContent = current 
+    }else {
+        document.getElementById(`current--${activePlayer}`).textContent = 0 
+        // current0.textContent = current
+        current = 0
+        activePlayer = activePlayer === 0 ? 1 : 0
+    }
 
 })
 
