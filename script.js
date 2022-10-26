@@ -40,13 +40,7 @@ rollBtn.addEventListener('click', () => {
         current += randDice
         document.getElementById(`current--${activePlayer}`).textContent = current 
     }else {
-        document.getElementById(`current--${activePlayer}`).textContent = 0 
-        // current0.textContent = current
-        current = 0
-        activePlayer = activePlayer === 0 ? 1 : 0
-
-        player01.classList.toggle('player--active')
-        player02.classList.toggle('player--active')
+        switchPlayer()
     }
 })
 
