@@ -22,10 +22,10 @@ let activePlayer = 0
 
 const switchPlayer = function () {
     document.getElementById(`current--${activePlayer}`).textContent = 0
-        current = 0
-        activePlayer = activePlayer === 0 ? 1 : 0
-        player01.classList.toggle('player--active')
-        player02.classList.toggle('player--active')
+    current = 0
+    activePlayer = activePlayer === 0 ? 1 : 0
+    player01.classList.toggle('player--active')
+    player02.classList.toggle('player--active')
 }
 
 
