@@ -45,6 +45,7 @@ rollBtn.addEventListener('click', () => {
 })
 
 holdBtn.addEventListener('click', function () {
-
+    scores[activePlayer] += current
+    document.getElementById(`score--${activePlayer}`).textContent = scores[activePlayer]
+    switchPlayer()
 })
-
