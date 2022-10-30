@@ -63,3 +63,7 @@ holdBtn.addEventListener('click', function () {
         }
     }
 })
+
+newBtn.addEventListener('click', () => {
+    location.reload();
+})
