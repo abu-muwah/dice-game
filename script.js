@@ -19,6 +19,7 @@ dice.classList.add('hidden')
 const scores = [0, 0]
 let current = 0
 let activePlayer = 0
+let playing = true
 
 const switchPlayer = function () {
     document.getElementById(`current--${activePlayer}`).textContent = 0
@@ -30,28 +31,34 @@ const switchPlayer = function () {
 
 
 rollBtn.addEventListener('click', () => {
-    const randDice = Math.trunc(Math.random() * 6) + 1
+    if (playing) {        
+        const randDice = Math.trunc(Math.random() * 6) + 1
 
-    console.log(randDice)
-    dice.classList.remove('hidden')
-    dice.src = `dice-${randDice}.png`
+        console.log(randDice)
+        dice.classList.remove('hidden')
+        dice.src = `dice-${randDice}.png`
 
-    if (randDice !== 1) {
-        current += randDice
-        document.getElementById(`current--${activePlayer}`).textContent = current 
-    }else {
-        switchPlayer()
-    }
+        if (randDice !== 1) {
+            current += randDice
+            document.getElementById(`current--${activePlayer}`).textContent = current 
+        }else {
+            switchPlayer()
+        }
+    }   
 })
 
 holdBtn.addEventListener('click', function () {
-    scores[activePlayer] += current
-    document.getElementById(`score--${activePlayer}`).textContent = scores[activePlayer]
+    if (playing) {
+        scores[activePlayer] += current
+        document.getElementById(`score--${activePlayer}`).textContent = scores[activePlayer]
 
-    if (scores[activePlayer] >= 20) {
-        document.querySelector(`.player--${activePlayer}`).classList.add('player--winner')
-        document.querySelector(`.player--${activePlayer}`).classList.remove('player--active')
-    } else {
-        switchPlayer()
+        if (scores[activePlayer] >= 20) {
+            playing = false
+            dice.classList.add('hidden')
+            document.querySelector(`.player--${activePlayer}`).classList.add('player--winner')
+            document.querySelector(`.player--${activePlayer}`).classList.remove('player--active')
+        } else {
+            switchPlayer()
+        }
     }
 })
